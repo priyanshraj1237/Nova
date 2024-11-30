@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose User Type</title>
+</head>
+<body>
+    <h2>Please Select Your Type</h2>
+    <form method="post" >
+        {% csrf_token %}
+        <label for="learner">
+            <input type="radio" id="learner" name="user_type" value="learner">
+            Learner
+        </label><br>
+        <label for="business">
+            <input type="radio" id="business" name="user_type" value="business">
+            Business
+        </label><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
