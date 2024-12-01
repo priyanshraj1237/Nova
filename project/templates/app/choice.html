@@ -4,20 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose User Type</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h2>Please Select Your Type</h2>
+    
     <form method="post" >
         {% csrf_token %}
-        <label for="learner">
-            <input type="radio" id="learner" name="user_type" value="learner">
+        <h2>Please Select Your Type</h2>
+        <label for="learning">
+            <input type="radio" id="learning" name="user_type" value="learning">
             Learner
-        </label><br>
+        </label>
         <label for="business">
-            <input type="radio" id="business" name="user_type" value="business">
+            <input type="radio" id="buisness" name="user_type" value="buisness">
             Business
-        </label><br>
-
+        </label>
         <button type="submit">Submit</button>
     </form>
 </body>

@@ -1,0 +1,456 @@
+<html>
+
+<head>
+    <title>
+        Udemy Dashboard
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+
+        }
+        .course-image {
+            width: 100%;
+            height: 80%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .course-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .course-description {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .course-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .course-info .badge {
+            background-color: #ffd700;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        .course-info .rating {
+            color: #f39c12;
+            margin-right: 10px;
+        }
+
+        .course-info .students {
+            color: #666;
+        }
+
+        .course-details {
+            margin-bottom: 20px;
+        }
+
+        .course-details i {
+            margin-right: 5px;
+        }
+
+        .course-price {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .course-discount {
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 10px;
+        }
+
+        .course-time-left {
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .tabs div {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .tabs .active {
+            border-bottom: 2px solid #333;
+            font-weight: 500;
+        }
+
+        .add-to-cart {
+            background-color: #6a1b9a;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .add-to-cart:hover {
+            background-color: #4a148c;
+        }
+
+        .guarantee {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .coupon-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .coupon-section input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .coupon-section button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .subscription-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .subscription-section button {
+            padding: 15px;
+            background-color: #ddd;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .learn-section {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .learn-section h3 {
+            margin-bottom: 20px;
+        }
+
+        .learn-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .learn-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .learn-section ul li i {
+            color: #2ecc71;
+            margin-right: 10px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .header {
+            background-color: #f7f7f7;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo img {
+            height: 30px;
+        }
+
+        .header .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+            width: 50%;
+        }
+
+        .header .search-bar input {
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .header .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .header .nav-links .profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .nav-links .profile img {
+            height: 30px;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <img alt="Udemy Logo" height="30"
+                src="https://storage.googleapis.com/a1aa/image/YvF79FQuN77tEZWoCI8INFitotPXXDkmLftp8cZdCrJ6UI7JA.jpg"
+                width="30" />
+        </div>
+        <div class="search-bar">
+            <input placeholder="Search for anything" type="text" />
+        </div>
+        <div class="nav-links">
+            <a href="#">
+                Home
+            </a>
+            <a href="#">
+                My Learnings
+            </a>
+            <a href="#">
+                Profile
+            </a>
+            <a href="#">
+                <i class="fas fa-heart">
+                </i>
+            </a>
+            <a href="#">
+                <i class="fas fa-shopping-cart">
+                </i>
+            </a>
+            <div class="profile">
+                <img alt="Profile Picture" height="30"
+                    src="https://storage.googleapis.com/a1aa/image/XVojhoibGV5feEMUtn4HEDknFG6iehxeUzSde9QajjVvOFyeE.jpg"
+                    width="30" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <img alt="Course preview image with Python logo and instructor" class="course-image" height="400"
+            src="https://storage.googleapis.com/a1aa/image/U1X7aHuQtsIbAJxcmffZnqALV6bNPnVirb2PX8YuR2el3hsnA.jpg"
+            width="800" />
+        <div class="course-title">
+            100 Days of Code: The Complete Python Pro Bootcamp
+        </div>
+        <div class="course-description">
+            Master Python by building 100 projects in 100 days. Learn data science, automation, build websites, games
+            and
+            apps!
+        </div>
+        <div class="course-info">
+            <div class="badge">
+                Bestseller
+            </div>
+            <div class="rating">
+                <i class="fas fa-star">
+                </i>
+                <i class="fas fa-star">
+                </i>
+                <i class="fas fa-star">
+                </i>
+                <i class="fas fa-star">
+                </i>
+                <i class="fas fa-star-half-alt">
+                </i>
+                (336,253 ratings)
+            </div>
+            <div class="students">
+                1,442,649 students
+            </div>
+        </div>
+        <div class="course-details">
+            <div>
+                <i class="fas fa-calendar-alt">
+                </i>
+                Last updated 11/2024
+            </div>
+            <div>
+                <i class="fas fa-globe">
+                </i>
+                English
+            </div>
+            <div>
+                <i class="fas fa-language">
+                </i>
+                English, Arabic [Auto], 14 more
+            </div>
+        </div>
+        <div class="tabs">
+            <div class="active">
+                Personal
+            </div>
+            <div>
+                Teams
+            </div>
+        </div>
+        <div class="course-price">
+            ₹399
+            <span class="course-discount">
+                ₹3,290
+            </span>
+            88% off
+        </div>
+        <div class="course-time-left">
+            <i class="fas fa-clock">
+            </i>
+            1 day left at this price!
+        </div>
+        <div class="add-to-cart">
+            Add to cart
+        </div>
+        <div class="guarantee">
+            30-Day Money-Back Guarantee
+            <br />
+            Full Lifetime Access
+        </div>
+        <div class="coupon-section">
+            <div>
+                CMCPSALE24 is applied
+                <br />
+                Udemy coupon
+            </div>
+            <input placeholder="Enter Coupon" type="text" />
+            <button>
+                Apply
+            </button>
+        </div>
+        <div class="subscription-section">
+            <div>
+                Subscribe to Udemy’s top courses
+            </div>
+            <div>
+                Get this course, plus 12,000+ of our top-rated courses, with Personal Plan.
+                <a href="#">
+                    Learn more
+                </a>
+            </div>
+            <button>
+                Start subscription
+            </button>
+            <div>
+                Starting at ₹850 per month
+                <br />
+                Cancel anytime
+            </div>
+        </div>
+        <div class="learn-section">
+            <h3>
+                What you'll learn
+            </h3>
+            <ul>
+                <li>
+                    <i class="fas fa-check">
+                    </i>
+                    You will master the Python programming language by building 100 unique projects over 100 days.
+                </li>
+                <li>
+                    <i class="fas fa-check">
+                    </i>
+                    You will be able to program in Python professionally
+                </li>
+                <li>
+                    <i class="fas fa-check">
+                    </i>
+                    Create a portfolio of 100 Python projects to apply for developer jobs
+                </li>
+                <li>
+                    <i class="fas fa-check">
+                    </i>
+                    Be able to use Python for data science and machine learning
+                </li>
+                <li>
+                    <i class="fas fa-check">
+                    </i>
+                    Build GUIs and Desktop applications with Python
+                </li>
+                <li>
+                    <i class="fas fa-check">
+                    </i>
+                    You will learn automation, game, app and web development, data science and machine learning all
+                    using
+                    Python.
+                </li>
+                <li>
+                    <i class="fas fa-check">
+                    </i>
+                    You will learn Selenium, Beautiful Soup, Request, Flask, Pandas, NumPy, Scikit Learn, Plotly, and
+                    Matplotlib.
+                </li>
+                <li>
+                    <i class="fas fa-check">
+                    </i>
+                    Be able to build fully fledged websites and web apps with Python
+                </li>
+                <li>
+                    <i class="fas fa-check">
+                    </i>
+                    Build games like Blackjack, Pong and Snake using Python
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    
+</body>
+</html>

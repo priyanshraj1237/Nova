@@ -1,1 +1,396 @@
-<h1> you are in landpage.....</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <title>Web Design Mastery | Car Rental</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="#" class="logo">
+            <img src="{% static 'css/logo.jpg' %}" >
+            {% comment %} <img src="assets/logo-dark.png" alt="logo" class="logo-dark" /> {% endcomment %}
+            <span>SKILLink</span>
+          </a>
+        </div>
+        <div class="nav_menu_btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#deals">Courses</a></li>
+        <li><a href="#choose">Why Chose Us</a></li>
+        <li><a href="#client">Testimonials</a></li>
+        <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="#choose">Register</a></li>
+      </ul>
+      <div class="nav__btns">
+        <button class="btn" onclick="window.location.href='{% url 'signin' %}'">Login</button>
+    </div>
+    </nav>
+    <div class="header__container" id="home">
+      <div class="header__image">
+        <img src="{% static 'css/header.jpg' %}" >
+      </div>
+      <div class="header__content">
+        <h2>👍 100% Trusted learning platform in India</h2>
+        <h1>QUICKLY CONNECT, LEARN, AND SHARE SKILLS !</h1>
+        <p class="section__description">
+          Explore a smooth and engaging skill exchange with us! Select from a diverse array of skills to learn and
+          teach, boosting your confidence along the way. It's quick, easy, and dependable—begin your skill journey
+          today!
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section class="header__form">
+    <form action="/">
+      <div class="input__group">
+        <label for="location">SKILL TO LEARN </label>
+        <input type="text" name="location" id="location" placeholder="Web Development, AI / ML" />
+      </div>
+      <div class="input__group">
+        <label for="start">SKILL TO TEACH</label>
+        <input type="text" name="start" id="start" placeholder="Communication, MERN " />
+      </div>
+      <button class="btn">Search <i class="ri-search-line"></i></button>
+    </form>
+  </section>
+
+  <section class="section_container about_container" id="about">
+    <h2 class="section__header">How It Works for You </h2>
+    <p class="section__description">
+      Learning and sharing skills with us is easy! Choose your learning path, connect with others, and start your
+      journey. We’ll take care of the details to ensure a smooth experience.
+    </p>
+    <div class="about__grid">
+      <div class="about__card">
+        <span><i class="ri-map-pin-2-fill"></i></span>
+        <h4>Learning from Scratch</h4>
+        <p>
+          Dive into a new skill! Browse our wide range of courses and resources designed for beginners, and start your
+          learning journey today.
+        </p>
+      </div>
+      <div class="about__card">
+        <span><i class="ri-calendar-event-fill"></i></span>
+        <h4>Exchanging Your Skills</h4>
+        <p>
+          Share what you know! Connect with others who are eager to learn from your expertise and exchange skills in a
+          collaborative environment.
+        </p>
+      </div>
+      <div class="about__card">
+        <span><i class="ri-roadster-fill"></i></span>
+        <h4>Get Hired for Your Skills</h4>
+        <p>
+          Showcase your talents! Create a profile to highlight your skills and attract opportunities to teach or
+          freelance, helping you earn while doing what you love
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="deals" id="deals">
+    <div class="section_container deals_container">
+      <h2 class="section__header">Most Popular Skill-Sharing Opportunities</h2>
+      <p class="section__description">
+        Discover our top skill-sharing opportunities, carefully selected to provide you with the best value and
+        experience. Join now and engage with others while showcasing your expertise!
+      </p>
+      <div class="deals__tabs">
+        <button class="btn active" data-id="Tesla">Web Development</button>
+        <button class="btn" data-id="Mitsubishi">Graphic Design</button>
+        <button class="btn" data-id="Mazda">Digital Marketing</button>
+        <button class="btn" data-id="Toyota">Photography</button>
+        <button class="btn" data-id="Honda">Language Tutoring</button>
+        <button class="btn">Explore More</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="choose__container" id="choose">
+    <div class="choose__image">
+        <img src="{% static 'css/choose.jpg' %}" alt="Header Image">#choose.......
+    </div>
+    <div class="choose__content">
+      <h2 class="section__header">Why Choose Us</h2>
+      <p class="section__description">
+        Experience the future of learning with our skill-sharing platform. We provide a diverse range of courses, expert instructors, and a supportive community to ensure an enriching educational journey.
+      </p>
+      <div class="choose__grid">
+        <div class="choose__card">
+          <span><i class="ri-customer-service-line"></i></span>
+          <div>
+            <h4>Expert Support</h4>
+            <p>Our knowledgeable team is here to guide you 24/7 with any questions.</p>
+          </div>
+        </div>
+        <div class="choose__card">
+          <span><i class="ri-map-pin-line"></i></span>
+          <div>
+            <h4>Global Community</h4>
+            <p>
+              Connect with learners and educators from around the world to expand your horizons.
+            </p>
+          </div>
+        </div>
+        <div class="choose__card">
+          <span><i class="ri-wallet-line"></i></span>
+          <div>
+            <h4>Affordable Learning</h4>
+            <p>Enjoy competitive pricing and great value for high-quality courses.</p>
+          </div>
+        </div>
+        <div class="choose__card">
+          <span><i class="ri-user-star-line"></i></span>
+          <div>
+            <h4>Qualified Instructors</h4>
+            <p>Learn from experienced professionals and industry experts.</p>
+          </div>
+        </div>
+        <div class="choose__card">
+          <span><i class="ri-verified-badge-line"></i></span>
+          <div>
+            <h4>Quality Content</h4>
+            <p>Access well-structured courses that are regularly updated and vetted.</p>
+          </div>
+        </div>
+        <div class="choose__card">
+          <span><i class="ri-calendar-close-line"></i></span>
+          <div>
+            <h4>Flexible Scheduling</h4>
+            <p>Learn at your own pace with courses available anytime, anywhere.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="subscribe__container">
+    <div class="subscribe__image">
+        <img src="{% static 'css/subscribe.jpg' %}" alt="subscribe Image">#subscribe........
+    </div>
+    <div class="subscribe__content">
+      <h2 class="section__header">
+        Embark on Your Learning Adventure!
+      </h2>
+      <p class="section__description">
+        Join us on an exciting journey of discovery! Subscribe for tailored skill-sharing insights, exclusive access to
+        innovative workshops, and a chance to connect with a community of passionate learners. Let’s unlock new
+        opportunities together!
+      </p>
+      <form action="/">
+        <input type="text" placeholder="Your Email" />
+        <button class="btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section_container client_container" id="client">
+    <h2 class="section__header">What People Say About Us?</h2>
+    <p class="section__description">
+      Discover why our users love learning and sharing skills with us! Read real reviews and testimonials to see how we foster a supportive and enriching community.
+    </p>
+    <!-- Slider main container -->
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <div class="client__card">
+            <div class="client__details">
+              <img src="assets/client-1.jpg" alt="client" />
+              <div>
+                <h4>Sarah Johnson</h4>
+                <div class="client__rating">
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-line"></i></span>
+                </div>
+              </div>
+            </div>
+            <p>
+              I had an amazing experience learning on this platform. The courses were well-structured, and the instructors were incredibly knowledgeable. Highly recommend!
+            </p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="client__card">
+            <div class="client__details">
+              <img src="assets/client-2.jpg" alt="client" />
+              <div>
+                <h4>Michael Adams</h4>
+                <div class="client__rating">
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-line"></i></span>
+                </div>
+              </div>
+            </div>
+            <p>
+              The support team was excellent! They helped me with all my questions, and I felt confident about my learning journey. I will definitely continue using this platform.
+            </p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="client__card">
+            <div class="client__details">
+              <img src="assets/client-3.jpg" alt="client" />
+              <div>
+                <h4>Emily Martinez</h4>
+                <div class="client__rating">
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-line"></i></span>
+                </div>
+              </div>
+            </div>
+            <p>
+              Affordable courses and a great selection of topics! I found exactly what I needed, and the learning experience was seamless. Very happy with my progress.
+            </p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="client__card">
+            <div class="client__details">
+              <img src="assets/client-4.jpg" alt="client" />
+              <div>
+                <h4>Jason Lee</h4>
+                <div class="client__rating">
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-line"></i></span>
+                </div>
+              </div>
+            </div>
+            <p>
+              The flexibility of the platform made my learning experience stress-free. I was able to adjust my schedule easily, and the resources were top-notch. Great service overall!
+            </p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="client__card">
+            <div class="client__details">
+              <img src="assets/client-5.jpg" alt="client" />
+              <div>
+                <h4>David Thompson</h4>
+                <div class="client__rating">
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-line"></i></span>
+                </div>
+              </div>
+            </div>
+            <p>
+              The courses I took were incredibly insightful, and the instructors were very supportive. I learned so much and can't wait to apply my new skills. Will definitely be back for more!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<footer class="footer">
+  <div class="section_container footer_container">
+    <div class="footer__col">
+      <div class="footer__logo">
+        <a href="#" class="logo">
+          <img src="assets/logo-white.png" alt="logo" />
+          <span>Skill Exchange</span>
+        </a>
+      </div>
+      <p>
+        We're here to connect you with a community of learners and experts. Stay updated for new courses, special offers, and more. Learn and grow with us!
+      </p>
+      <ul class="footer__socials">
+        <li>
+          <a href="#"><i class="ri-facebook-fill"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="ri-twitter-fill"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="ri-linkedin-fill"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="ri-instagram-line"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="ri-youtube-fill"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Our Services</h4>
+      <ul class="footer__links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#why-choose">Why Choose Us</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Popular Skills</h4>
+      <ul class="footer__links">
+        <li><a href="#">Web Development</a></li>
+        <li><a href="#">Graphic Design</a></li></li>
+        <li><a href="#">Digital Marketing</a></li>
+        <li><a href="#">Data Science</a></li>
+        <li><a href="#">Photography</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Contact Us</h4>
+      <ul class="footer__links">
+        <li>
+          <a href="#">
+            <span><i class="ri-phone-fill"></i></span> +91 0987654321
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span><i class="ri-map-pin-fill"></i></span> New Delhi, India
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span><i class="ri-mail-fill"></i></span> info@skillexchange.com
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bar">
+    Copyright © 2024 Skill Exchange. All rights reserved.
+  </div>
+</footer>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+
+</html>
