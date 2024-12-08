@@ -16,6 +16,15 @@
   box-sizing: border-box;
 }
 
+.chooseclss{
+  align-items:center;
+  margin-left: 30%;
+  text-align: center;
+  justify-content: center;
+  color: #8a79f0;
+
+}
+
 .section__container {
   max-width: var(--max-width);
   margin: auto;

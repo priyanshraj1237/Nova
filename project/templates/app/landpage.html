@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <title>Web Design Mastery | Car Rental</title>
+  <title>Zeepo</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
@@ -17,9 +17,9 @@
       <div class="nav__header">
         <div class="nav__logo">
           <a href="#" class="logo">
-            <img src="{% static 'css/logo.jpg' %}" >
+            <img src="{% static 'css/logo1.png' %}" >
             {% comment %} <img src="assets/logo-dark.png" alt="logo" class="logo-dark" /> {% endcomment %}
-            <span>SKILLink</span>
+            <span>Zeepo</span>
           </a>
         </div>
         <div class="nav_menu_btn" id="menu-btn">
@@ -30,7 +30,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#deals">Courses</a></li>
-        <li><a href="#choose">Why Chose Us</a></li>
+        <li><a href="#choose">Why Choose Us</a></li>
         <li><a href="#client">Testimonials</a></li>
         <li><a href="{% url 'register' %}">Register</a></li>
         <li><a href="#choose">Register</a></li>
@@ -69,6 +69,39 @@
     </form>
   </section>
 
+
+  <div class="chooseclss" style="text-align: center; font-size: 40px; margin-bottom:130px;" >
+
+    <h2>What you want to do Today</h2>
+
+<style>
+  input[type="radio"] {
+      transform: scale(1.5); /* Adjust the scale as needed */
+      margin-right: 10px; /* Add some spacing for better alignment */
+  }
+  label {
+      font-size: 1.2em; /* Optional: Increase label font size for better visibility */
+  }
+</style>
+
+<div class="flexi" style="display:flex; justify-content:center">
+  <label for="learning">
+    <input style=";" type="radio" id="learning" name="user_type" value="learning" 
+           onclick="window.location.href='{% url 'learn' %}'">
+    Learn
+</label>
+<br>
+<label for="business">
+    <input  style="margin-left: 40px;" type="radio" id="business" name="user_type" value="business" 
+           onclick="window.location.href='{% url 'earn' %}'">
+    Earn
+</label>
+
+</div>
+
+
+    </div>
+
   <section class="section_container about_container" id="about">
     <h2 class="section__header">How It Works for You </h2>
     <p class="section__description">
@@ -105,11 +138,14 @@
 
   <section class="deals" id="deals">
     <div class="section_container deals_container">
+      
+      
       <h2 class="section__header">Most Popular Skill-Sharing Opportunities</h2>
       <p class="section__description">
         Discover our top skill-sharing opportunities, carefully selected to provide you with the best value and
         experience. Join now and engage with others while showcasing your expertise!
       </p>
+
       <div class="deals__tabs">
         <button class="btn active" data-id="Tesla">Web Development</button>
         <button class="btn" data-id="Mitsubishi">Graphic Design</button>
@@ -124,7 +160,7 @@
 
   <section class="choose__container" id="choose">
     <div class="choose__image">
-        <img src="{% static 'css/choose.jpg' %}" alt="Header Image">#choose.......
+        <img src="{% static 'css/choose.jpg' %}" alt="Header Image">
     </div>
     <div class="choose__content">
       <h2 class="section__header">Why Choose Us</h2>
@@ -181,7 +217,7 @@
   </section>
   <section class="subscribe__container">
     <div class="subscribe__image">
-        <img src="{% static 'css/subscribe.jpg' %}" alt="subscribe Image">#subscribe........
+        <img src="{% static 'css/subscribe.jpg' %}" alt="subscribe Image">
     </div>
     <div class="subscribe__content">
       <h2 class="section__header">
@@ -214,7 +250,7 @@
             <div class="client__details">
               <img src="assets/client-1.jpg" alt="client" />
               <div>
-                <h4>Sarah Johnson</h4>
+                <h4>Raghvendra Pratap</h4>
                 <div class="client__rating">
                   <span><i class="ri-star-fill"></i></span>
                   <span><i class="ri-star-fill"></i></span>
@@ -234,7 +270,7 @@
             <div class="client__details">
               <img src="assets/client-2.jpg" alt="client" />
               <div>
-                <h4>Michael Adams</h4>
+                <h4>Priya Singh</h4>
                 <div class="client__rating">
                   <span><i class="ri-star-fill"></i></span>
                   <span><i class="ri-star-fill"></i></span>
@@ -252,9 +288,9 @@
         <div class="swiper-slide">
           <div class="client__card">
             <div class="client__details">
-              <img src="assets/client-3.jpg" alt="client" />
+              <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fprofile_3135715&psig=AOvVaw3FFJR-fIone0nbo5sPg3hn&ust=1733112824472000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIjHhLjahYoDFQAAAAAdAAAAABAE" alt="client" />
               <div>
-                <h4>Emily Martinez</h4>
+                <h4>Anjali Sharma</h4>
                 <div class="client__rating">
                   <span><i class="ri-star-fill"></i></span>
                   <span><i class="ri-star-fill"></i></span>

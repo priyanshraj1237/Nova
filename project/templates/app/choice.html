@@ -62,14 +62,14 @@
     
     <form method="post" >
         {% csrf_token %}
-        <h2>Please Select Your Type</h2>
+        <h2>What you want to do Today  </h2>
         <label for="learning">
             <input type="radio" id="learning" name="user_type" value="learning">
             Learner
         </label>
         <label for="business">
             <input type="radio" id="buisness" name="user_type" value="buisness">
-            Business
+            Buisness
         </label>
         <button type="submit">Submit</button>
     </form>

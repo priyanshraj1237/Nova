@@ -1,598 +1,738 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>
-        Udemy Dashboard
-    </title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet" />
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            margin: 20px;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            /* Slightly increase size on hover */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            /* Increase shadow on hover */
-        }
-
-        @media (max-width: 768px) {
-            .card {
-                width: 90%;
-                /* Adjust card width for smaller screens */
-            }
-        }
-
-        .header {
-            background-color: #f7f7f7;
-            padding: 10px 20px;
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online courses-Learn Anything, On Yours Schedule | Zeepo </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    body {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    }
+    h1, h2 {
+        font-family:SuisseWorks
+    }
+     #header {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            background: white;
         }
-
-        .header .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .header .logo img {
-            height: 30px;
-        }
-
-        .header .search-bar {
-            flex-grow: 1;
-            margin: 0 20px;
-            width: 50%;
-        }
-
-        .header .search-bar input {
-            width: 50%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .header .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .header .nav-links a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .header .nav-links .profile {
-            display: flex;
-            align-items: center;
-        }
-
-        .header .nav-links .profile img {
-            height: 30px;
-            border-radius: 50%;
-        }
-
-        .welcome-section {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .welcome-section .profile-pic {
-            width: 50px;
+        #udemy_logo  {
+            width: 100px;
+            border: 1px solid white ;
             height: 50px;
-            border-radius: 50%;
-            background-color: #333;
-            color: #fff;
+        }
+        #search_box > input{
+            flex-grow: 2;
+            border: 1px solid white;
+            width: 95%;
+            height: 30px;
+            margin-right:15px;
+            /* border-radius: 30px; */
+            outline:none;
+        }
+        .search-btn {
+            width: 20px;
+            height: 20px;
+        }
+        #search_box {
+            flex-grow: 2;
+            margin-bottom: 1%;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin: 0 auto;
+            margin-top: 5px;
+            border: 1px solid black;
+            border-radius: 40px;
         }
-
-        .welcome-section h1 {
-            font-size: 24px;
-            margin: 10px 0;
+        .header_text {
+            font-size: .9rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-top: 20px;
         }
+        
+       #sign_up {
+           background: black;
+           border: 1px solid black;
+           width: 90px;
+           margin: 10px 3px;
+           font-weight: bold;
+           font-size: 0.8rem;
+       }
+       #log_in {
+           background: white;
+           border: 1px solid black;
+           width: 90px;
+           margin: 10px auto;
+           font-weight: bold;
+           font-size: 0.8rem;
+       }
+       #cart {
+           background: white;
+           border: 0px solid black;
+       }
+       #cart > img {
+        width: 30px;
+           height: 30px;
+       }
+       #globe {
+        background: white;
+           border: 1px solid black;
+           margin: 10px 3px;
+       }
+       #globe >img {
 
-        .welcome-section p {
-            color: #666;
-        }
-
-        .welcome-section a {
-            color: #0056b3;
-            text-decoration: none;
-        }
-
-        .carousel {
-            position: relative;
-            width: 100%;
-            margin: 20px auto;
-            height: 50%;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%;
-            height: 100%;
-            /* To account for all slides */
-        }
-
-        .carousel-item {
-            flex: 1 0 100%;
-            display: flex;
-            align-items: center;
-            gap: 15%;
-            padding: 20px;
-            background-color: #f4a261;
-        }
-
-        .carousel-item img {
-            max-width: 200px;
-            border-radius: 8px;
-        }
-
-        .text-box {
-            max-width: 100%;
-            height: 60%;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .left-button {
-            left: 10px;
-        }
-
-        .right-button {
-            right: 10px;
+        width: 20px;
+           height: 20px;
+       }
+       * {
+            margin: 5px;
         }
 
 
-        .container {
-            width: 90%;
-            margin: 0 auto;
+        .color {
+            color: white;
         }
 
-        .header {
-            text-align: center;
-            margin: 20px 0;
+        .color_1 {
+            color: black;
         }
+   
 
-        .header h1 {
-            font-size: 2em;
-            font-weight: 700;
-        }
+#home-top {
+    margin:5px 0px;
+    display:grid;
+    height:380px;
+    background-image: url(https://img-c.udemycdn.com/notices/web_banner/image_udlite/92a752b4-2f5b-45c7-a451-d84b32ccb0cf.jpg);
+   
+    grid-template-columns: 25%;
+    background-repeat: no-repeat;
+   
 
-        .header a {
-            color: #6a0dad;
-            text-decoration: none;
-            font-weight: 700;
-        }
+}
 
-        .learning-cards,
-        .recommendation-cards {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            /* Enable horizontal scrolling */
-            flex-wrap: nowrap;
-            /* Prevent wrapping */
-            padding: 10px 0;
-            /* Add some vertical padding */
-            margin: 30px;
-        }
+.leftbox {
+  
+   margin-left:20%;
+   background-color: white;
+   width:400px;
+   margin-top:50px;
+   margin-bottom: 60px;
+   padding:15px;
+   
+}
+.b-font {
+    font-size: 26px;
 
-        .learning-cards::-webkit-scrollbar,
-        .recommendation-cards::-webkit-scrollbar {
-            height: 8px;
-            /* Horizontal scrollbar height */
-        }
+}
+#b-font {
+    font-size: 44px;
+}
+.leftbox > p {
+    font-size: 20px;
+}
+.leftbox > input {
+    font-size: 24px;
+   
+}
+.leftbox > input::placeholder {
+    font-size: 12px;
+    padding:10px;
+}
+.course-section > p {
+    
+    font-size: 22px;
+}
 
-        .learning-cards::-webkit-scrollbar-thumb,
-        .recommendation-cards::-webkit-scrollbar-thumb {
-            background: #ccc;
-            /* Default scrollbar color */
-            border-radius: 4px;
-        }
+.course-flex {
+    display:flex;
+    flex-direction: row;
+    gap:15px;
+    margin-top:25px;
+  
 
-        .learning-cards::-webkit-scrollbar-thumb:hover,
-        .recommendation-cards::-webkit-scrollbar-thumb:hover {
-            background: #aaa;
-            /* Hover effect for the scrollbar */
-        }
+}
+.course-flex > a {
+    font-size: 18px;
+    text-decoration: none;
+    color:rgb(44, 44, 44);
+    font-weight: 600;
+    
+}
+a#a1:hover {
+    color:rgb(0, 0, 0);
+    
+}
+a#a2:hover {
+    color:rgb(0, 0, 0);
+    
+}
+a#a3:hover {
+    color:rgb(0, 0, 0);
+   
+}
+a#a4:hover {
+    color:rgb(0, 0, 0);
+   
+}
+a#a5:hover {
+    color:rgb(0, 0, 0);
+  
+}
+a#a6:hover {
+    color:rgb(0, 0, 0);
+    
+}
+a#a7:hover {
+    color:rgb(0, 0, 0);
+  
+}
+.thpara {
+    background-color:#f5fffc;
+    display:flex;
+    flex-direction:row;
+    font-size: 18px;
+    color:rgb(44, 44, 44);
+    font-weight: 600;
+    width:100%;
+    margin-top:5%;
+  
+    
+
+}
+.thpara > div {
+    display: flex;
+    flex-direction: row;
+    width:28%;
+    height:2%;
+
+
+   
+   
+}
+.thpara > div:nth-child(2){
+    margin-left:8%;
+    margin-right:8%;
+}
+.thpara > div > img {
+    width:10%;
+    height:10%;
+    
+
+}
+ .marg {
+     margin-top: 5%;
+ }
+.instructor-box , .business-box , .transform{
+    display:flex;
+    flex-direction:row;
+    width:70%;
+    margin:auto;
+    margin-top:5%;
+  
+
+   
+}
+.instructor-box > .content , .transform > .content {
+    width:45%;
+   
+    margin:10%;
+    
+}
+.business-box > .content {
+   
+    margin:10% 6%;
+    width:45%;
+}
+.business-box > .content > img {
+    width:70%;
+}
+.business-box > .img-box {
+    
+    width:45%;
+   
+
+}
+
+.content > p{
+    font-size: 22px;
+}
+.trusted {
+    background-color:f5fffc;
+    text-align: center;
+    margin-top:5%;
+
+}
+.flex-image {
+    display:flex;
+    flex-direction: row;
+    margin: 1% 30%;
+}
+.flex-image img {
+    margin:3%;
+
+}
+#footer {
+    background-color: black;
+    margin:0px;
+    width:100%;
+    height:300px;
+    border:1px solid black;
+    margin-top:5%;
 
 
 
-        .card {
-            flex: 0 0 auto;
-            /* Prevent cards from shrinking or growing */
-            width: 300px;
-            /* Fixed width for all cards */
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 20px;
-            padding: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            /* Add transition for hover effect */
-        }
+}
+.logo-img > img {
+    width:6%;
+    float:left;
+    margin-left:3%;
+    margin-bottom:3%;
 
-        .card:hover {
-            transform: scale(1.05);
-            /* Slightly increase size on hover */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            /* Increase shadow on hover */
-        }
+}
+.logo-img > div{
+    float:right;
+    color:white;
+    margin-right:3%;
+}
+.footer-link {
+    display: grid;
+    margin:20px 20px 30px 30px;
+    width:60%;
+    grid-template-columns:28% 28% 28%;
+    grid-template-rows: 10% 10% 10% 10% 10%;
+    gap:5%;
+    color:white;
+    /* border: 3px solid white */
 
-        .card img {
-            width: 90%;
-            height: 50%;
-            border-radius: 5px;
-            padding: 5%;
-        }
+}
+.footer-link >div:nth-child(12) {
+    grid-row-start: 5;
+}
+.glob {
+    float:right;
+    background-color: black;
+    /* border: 3px solid white */
+}
+.final-flex {
+    /* border:3px solid white; */
+    display: flex;
+    flex-direction: row;
+    
+}
+.final-flex > .glob  {
+    height:15%;
+    width:10%;
+    margin-left:300px;
+    float:right;
+    background-color: black;
+    
+}
 
-        .card h3 {
-            font-size: 1em;
-            font-weight: 700;
-            margin: 10px 25px;
-        }
+#globe1 {
+        background:black;
+        color:white;
+           /* border: 3px solid red; */
+           margin: 5px 3px;
+       }
+       #globe1 >img {
+           padding:5px;
+           
 
-        .card p {
-            font-size: 0.9em;
-            color: #666;
-            margin: 10px 25px;
+        width: 20px;
+           height: 20px;
+       } 
+       #globe1 > span {
+           padding:0px;
+           margin:0px;
+           margin-bottom:10px;
+           font-size:16px;
+           border:1px solid white
+        
+       }
+       .img-small {
+           width:5%;
+       }
+/* 
+#globe {
+        background:white;
+           border: 1px solid white;
+           margin: 10px 3px;
+       }
+       #globe >img {
 
-        }
+        width: 20px;
+           height: 20px;
+       } */
+/* 
+.clear {
+    clear:both;
+    
+} */
 
-        .card .meta {
-            font-size: 0.8em;
-            color: #999;
-        }
+     .course1 a{
+        text-decoration:none;
+    }
+    
+    .course1 h3{
+        color:black
+    }
+    .course-video-box {
+        width:98%;
+        height:600px;
+        border:1px solid grey;
+        margin-top:5%;
+        
 
-        .banner {
-            background: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
+    }
+    .course-video-box > h1 {
+        padding:25px 25px;
+    }
+    .para {
+        width:60%;
+        line-height:22px;
+        margin:10px 25px;
+        font-size:18px;
 
-        .banner button {
-            background: #fff;
-            color: #333;
-            border: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    }
+    .video-box {
+        display:grid;
+        grid-template-columns: 18% 18% 18% 18% 18%;
+        gap:2%;
+        /* border:1px solid green; */
+        margin-top:4%;
+        
+    }
+     #instructor {
+         font-size: 14px;
+         color:grey;
+        
+    }
+    .star {
+        font-size: 16px;
+        color:#E65100;
+        font-weight: 600;
+    }
+    .enrol-no {
+        font-size:14px;
+        color:grey;
+    }
+    .price-course {
+        font-weight: 600;
+        font-size: 20px;
+        color:black;
+    }
+    #search2 {
+        border: 1px solid black;
+        display:flex;
 
-        h2 {
-            font-size: 1.5em;
-            text-align: center;
-            color: #0056b3;
-            font-weight: 700;
-            margin: 20px 0;
-        }
+    }
+    #search-box {
+        flex-grow:2;
+        outline:none;
+        border:none;
+    }
+   
+    section {
+        min-height:100vh;
+    }
+    #log_in > a {
+        color:black;
+        text-decoration: none;
+    }
+    #sign_up > a {
+        color:white;
+        text-decoration: none;
+    }
+    html,body {
+        height:100%;
+        
+    }
+    .nameshowing {
+        margin-left:1%;
+        margin-top:2%;
+        
+    }
+    
 
-        .recommendation-cards .card {
-            width: 18%;
-        }
-
-        @media (max-width: 768px) {
-
-            .learning-cards,
-            .recommendation-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .card {
-                width: 90%;
-            }
-
-            .recommendation-cards .card {
-                width: 90%;
-            }
-        }
+    
     </style>
 </head>
-
 <body>
-    <div class="header">
-        <div class="logo">
-            <img alt="Udemy Logo" height="30"
-                src="https://storage.googleapis.com/a1aa/image/YvF79FQuN77tEZWoCI8INFitotPXXDkmLftp8cZdCrJ6UI7JA.jpg"
-                width="30" />
+  
+
+   
+    <div id="header">
+        <div id="udemy_logo">
+            <a href="/" >
+            <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Udemy" href="home_page.html"  />
+            </a>
         </div>
-        <div class="search-bar">
-            <input placeholder="Search for anything" type="text" />
+        <div class="header_text" id="Categories_btn">
+            Categories
         </div>
-        <div class="nav-links">
-            <a href="#">
-                Home
-            </a>
-            <a href="#">
-                My Learnings
-            </a>
-            <a href="#">
-                Profile
-            </a>
-            <a href="#">
-                <i class="fas fa-heart">
-                </i>
-            </a>
-            <a href="#">
-                <i class="fas fa-shopping-cart">
-                </i>
-            </a>
-            <div class="profile">
-                <img alt="Profile Picture" height="30"
-                    src="https://storage.googleapis.com/a1aa/image/XVojhoibGV5feEMUtn4HEDknFG6iehxeUzSde9QajjVvOFyeE.jpg"
-                    width="30" />
+        <div id="search_box">
+           <a href="/course1" >
+               <img class="search-btn"  src="https://img.icons8.com/material-sharp/2x/search.png" />
+           </a>
+            <input  type="text" placeholder="Search for anything"  />
+        </div>
+        <div class="header_text">Zeepo Business</div>
+        <div class="header_text">Teach on Zeepo</div>
+        <a href="/cart"><button id="cart"><img src="https://cdn3.iconfinder.com/data/icons/shopping-cart-19/200/457-128.png" /></button></a>
+        <button id="log_in" ><a href="/login" >Log In</a></button>
+        <button id="sign_up"><a href="/signup">Sign Up </a></button>
+        <button id="globe"><img src="https://cdn3.iconfinder.com/data/icons/media-1-3/32/Internet-Globe-Communication-128.png"/></button>
+    </div>
+
+    <section>
+        <div id = "home-top">
+            <img src="" alt="">
+           
+            <div class="leftbox">
+                    <h1 id = "b-font">Learning that gets you</h1>
+                   <p>Skills for your present (and your future). Get started with us.</p> 
+                  <div id="search2">
+                    <input id = "search-box" type="text" placeholder="What do you want to learn ?">
+                    <a href="/course1" >
+                     <img class="search-btn"  src="https://img.icons8.com/material-sharp/2x/search.png" />
+                 </a>
+                  </div>
+                </div>
+        </div>
+
+        <div class="course-section">
+            <h1 id = "b-font" class = "marg">A broad selection of courses</h1>
+            <p>Choose from 155,000 online video courses with new additions published every month</p>
+            <div class="course-flex">
+                <a id = "a1"  href="">Python</a>
+                <a  id = "a2" href="">Excel</a>
+                <a  id = "a3"href="">Web Development</a>
+                <a  id = "a4" href="">Javascript</a>
+                <a  id = "a5" href="">Data Science</a>
+                <a  id = "a6" href="">AWS certification</a>
+                <a  id = "a7" href="">Drawing</a>
             </div>
         </div>
-    </div>
-    <div class="welcome-section">
-        <div class="profile-pic">
-            J1
-        </div>
-        <h1>
-            Welcome back, Jitésh
-        </h1>
-        <p>
-            Web Developer
-            <a href="#">
-                Edit occupation and interests
-            </a>
-        </p>
-    </div>
-    <div class="carousel">
-        <button class="nav-button left-button">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://storage.googleapis.com/a1aa/image/syLPZr2vwMqNK9mOFnZparaVkHtHZgj0RZg5o3nwedS7UI7JA.jpg"
-                    alt="Slide 1" />
-                <div class="text-box">
-                    <h2>We missed you, Jitésh</h2>
-                    <p>
-                        <a href="#">Get back on track</a> and achieve your goals. 5–10 minutes a day will do.
-                    </p>
-                </div>
+        <h2 class = "nameshowing" id = "user_name"> </h2>
+        <div class="course-video-box">
+            <h1>Grow your software development skills with JavaScript</h1>
+            <div class="para">
+                <p>JavaScript is one of the most ubiquitous programming languages on the planet, mostly because it's the backbone of interactive web applications. On top of that, JavaScript is a great language for beginners because it gives them a chance to write code that does something visual, which is exciting and helpful when you're just getting started as a programmer. Dynamic content is the hot topic in web development right now. Dynamic content refers to content that constantly changes and adapts to specific users whenever possible.</p>
+
             </div>
-            <div class="carousel-item">
-                <img src="https://storage.googleapis.com/a1aa/image/JavaProgramming.jpg" alt="Slide 2" />
-                <div class="text-box">
-                    <h2>We missed you, Jitésh</h2>
-                    <p>
-                        <a href="#">Get back on track</a> and achieve your goals. 5–10 minutes a day will do.
-                    </p>
+            <div class="video-box">
+                <div class="course1">
+                    <a href="/course1">
+                <img src="https://img-c.udemycdn.com/course/240x135/851712_fc61_6.jpg" alt="">
+                <h3 class= "course-title">The Complete JavaScript Course 2021</h3>
+                <p id = "instructor">James anderson</p>
+                <p class="star">4.6 Star<span class = "enrol-no">(378889)</span></p>
+                <p class = "price-course">₹8640</p>
+                    </a>
                 </div>
+
+
+                 <div class="course1">
+                    <a href="/course2">
+                <img src="https://img-c.udemycdn.com/course/240x135/364426_2991_6.jpg" alt="">
+                <h3 class= "course-title">JavaScript:Understanding the Weird Parts</h3>
+                <p id = "instructor">Anthony Alicea</p>
+                <p class="star">4.7 Star<span class = "enrol-no">(164281)</span></p>
+                <p class = "price-course">₹7140</p>
+                </a>
+                </div>
+
+
+                 <div class="course1">
+                    <a href="/course3">
+                <img src="https://img-c.udemycdn.com/course/240x135/1463348_52a4_2.jpg" alt="">
+                <h3 class= "course-title">Modern JavaScript From The Beginning</h3>
+                <p id = "instructor">Brad Traversy</p>
+                <p class="star">4.7 Star<span class = "enrol-no">(858889)</span></p>
+                <p class = "price-course">₹8640</p>
+                </a>
+                </div>
+
+
+                 <div class="course1">
+                    <a href="/course4">
+                <img src="https://img-c.udemycdn.com/course/240x135/2508942_11d3_3.jpg" alt="">
+                <h3 class= "course-title">JavaScript - The Complete Guide 2021</h3>
+                <p id = "instructor">Maxmillian schwarzmuller,..</p>
+                <p class="star">4.5 Star<span class = "enrol-no">(16266)</span></p>
+                <p class = "price-course">₹9401</p>
+                  </a>
+                </div>
+
+
+                 <div class="course1">
+                    <a href="/course5">
+                <img src="https://img-c.udemycdn.com/course/240x135/1501104_967d_13.jpg" alt="">
+                <h3 class= "course-title">The Complete JavaScript Course 2021</h3>
+                <p id = "instructor">Andre Neigoi</p>
+                <p class="star">4.8 Star<span class = "enrol-no">(8889)</span></p>
+                <p class = "price-course">₹7861</p>
+                 </a>
+                </div>
+              
+
+              </div>
+            
+
+
+        </div>
+
+
+        <div class="thpara">
+            <div>
+                <img src="https://cdn3.iconfinder.com/data/icons/movie-video/512/Icon_6-128.png" alt="">
+                <span>Learn in-demand skills with over 155000 video courses</span>
+            </div>
+            <div>
+                <img src="https://cdn0.iconfinder.com/data/icons/multimedia-solid-30px/30/star_rate_favorite_bookmark-128.png" alt="">
+                <span>Choose courses taught by real-world experts</span>
+            </div>
+            <div>
+                <img src="https://cdn2.iconfinder.com/data/icons/picons-basic-3/57/basic3-154_infinity-128.png" alt="">
+                <span>Learn at your own pace, with lifetime access on mobile and desktop</span>
+            </div>
+
+        </div>
+
+        <div class="instructor-box">
+            <div class="img-box">
+                <img src="https://s.udemycdn.com/home/non-student-cta/instructor-1x-v3.jpg" alt="">
+            </div>
+            <div class = "content">
+                <h1>Become an Instructor</h1>
+                <p>Instructors from all around the world millions of students on Udemy.We provide the tools and skills to teach what you love.</p>
+
+            </div>
+        </div>
+
+        <div class="trusted">
+            <h1>Trusted by companies of all sizes</h1>
+            <div class = "flex-image">
+               
+                    <img src="https://s.udemycdn.com/partner-logos/v4/apple-dark.svg" alt="">
+                    <img src="https://s.udemycdn.com/partner-logos/v4/box-dark.svg" alt="">
+                    <img src="https://s.udemycdn.com/partner-logos/v4/volkswagen-dark.svg" alt="">
+                    <img src="https://s.udemycdn.com/partner-logos/v4/netflix-dark.svg" alt="">
+                    <img src="https://s.udemycdn.com/partner-logos/v4/eventbrite-dark.svg" alt="">
+
+              
+               
+            </div>
+        </div>
+
+        <div class="business-box">
+           
+            <div class = "content">
+                <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-ub.svg" alt="">
+                <p>Get unlimited access to 6,000+ of Udemy’s top courses for your team. Learn and improve skills across business, tech, design, and more.
+
+                </p>
+
+            </div>
+            <div class="img-box">
+                <img src="https://s.udemycdn.com/home/non-student-cta/ub-1x-v3.jpg" alt="">
+            </div>
+           
+          
+            
+        </div>
+
+        <div class="transform">
+            <div class="img-box">
+                <img src="https://s.udemycdn.com/home/non-student-cta/transform-1x-v3.jpg" alt="">
+            </div>
+            <div class = "content">
+                <h1>Transform your life through education</h1>
+                <p>Learners around the world are launching new careers, advancing in their fields, and enriching their lives.</p>
+
+            </div>
+
+        </div>
+    </secion>
+
+        <div id="footer">
+            <div class="final-flex">
+            <div class="footer-link">
+                <div><p>Udemy Business</p></div>
+                <div><p>Careers</p></div>
+                <div><p>Terms</p></div>
+                <div><p>Teach on Udemy</p></div>
+                <div><p>Blog</p></div>
+                <div><p>Privacy policy</p></div>
+                <div><p>Get the App</p></div>
+                <div><p>Help and support</p></div>
+                <div><p>Sitemap</p></div>
+                <div><p>About us</p></div>
+                <div><p>Affiliate</p></div>
+                <div><p>Contact us</p></div>
+            </div>
+            <!-- <div class= "glob">
+                <button id="globe1"><img src="https://cdn0.iconfinder.com/data/icons/mobile-apps-settings-linear-white-with-black-backg/2048/439_-_Browser-256.png"/> 
+                    <span>English</span>
+
+                 </button>
+                <div class="clear"></div>
+            </div> -->
+        </div>
+        <div class="logo-img">
+
                 
+            <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy-inverted.svg" alt="">
+            <div> © 2021 Udemy, Inc</div>
+            </div>
 
-            </div>
-            <div class="carousel-item">
-                <img src="https://storage.googleapis.com/a1aa/image/KffH7eoU9QXVRoHWfBf9Aec5e2JbtVj7KxJBZAaXa30dCXI7JA.jpg"
-                    alt="Slide 3" />
-                    <div class="text-box">
-                        <h2>We missed you, Jitésh</h2>
-                        <p>
-                            <a href="#">Get back on track</a> and achieve your goals. 5–10 minutes a day will do.
-                        </p>
-                    </div>
-            </div>
-        </div>
-        <button class="nav-button right-button">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-    </div>
 
-    <div>
-        <h2>Lets Start Learning !</h2>
-        <h3>My Learnings</h3>
-        <div class="learning-cards">
-            <div class="card" onclick="window.location.href='{% url 'courses' %}'">
-                <img alt="Person giving a lecture" height="200"
-                    src="https://storage.googleapis.com/a1aa/image/KffH7eoU9QXVRoHWfBf9Aec5e2JbtVj7KxJBZAaXa30dCXI7JA.jpg"
-                    width="300" />
-                <h3>
-                    The Complete 2024 Web Development Bootcamp
-                </h3>
-                <p>
-                    184. Tip from Angela - Dealing with Frustration
-                </p>
-                <p class="meta">
-                    Lecture • 2m
-                </p>
-            </div>
-            <div class="card" onclick="window.location.href='{% url 'courses' %}'">
-                <img alt="Document icon" height="200"
-                    src="https://storage.googleapis.com/a1aa/image/nh9IUKNIYwYoOtlgOqGmLCqnuypHrMvjw2cElZeUchGDXI7JA.jpg"
-                    width="300" />
-                <h3>
-                    React Native IOS and Android App Development
-                </h3>
-                <p>
-                    1. Are you new to JavaScript React and NodeJs?
-                </p>
-                <p class="meta">
-                    Article • 1m
-                </p>
-            </div>
-            <div class="card" onclick="window.location.href='{% url 'courses' %}'">
-                <img alt="Python code on screen" height="200"
-                    src="https://storage.googleapis.com/a1aa/image/M3eltVf3iDieeRGki89cyuhumEdNgBKlefWDoopBY6o7gLk9E.jpg"
-                    width="300" />
-                <h3>
-                    Python Complete Course For Python Beginners
-                </h3>
-                <p>
-                    15. Tutorial 14 - Python Numbers
-                </p>
-                <p class="meta">
-                    Lecture • 16m
-                </p>
-            </div>
-            <!-- New Card Added -->
-            <div class="card" onclick="window.location.href='{% url 'courses' %}'">
-                <img alt="Java Programming" height="200"
-                    src="https://storage.googleapis.com/a1aa/image/JavaProgramming.jpg" width="300" />
-                <h3>
-                    Learn Java Programming Masterclass
-                </h3>
-                <p>
-                    Become a Java Developer by learning Java from scratch.
-                </p>
-                <p class="meta">
-                    Lecture • 30m
-                </p>
-            </div>
         </div>
-    </div>
 
-    <div class="banner">
-        <p>
-            Training 2 or more people? Get your team access to a wide range of expert-led skills and courses on SKILLink
-        </p>
-        <button>
-            Get SKILLink Premium
-        </button>
-        <button>
-            Dismiss
-        </button>
-    </div>
-    <div class="recommendation-section">
-        <h2>
-            What to learn next !
-        </h2>
-        <h3>
-            Recommended for you
-        </h3>
-        <div class="recommendation-cards">
-            <div class="card" onclick="window.location.href='{% url 'courses' %}'">
-                <img alt="Person teaching Python" height="200"
-                    src="https://storage.googleapis.com/a1aa/image/hPJgJTbqEvIWIRIVyQ0qRY86nviONRnmk46UguMLhivfWI7JA.jpg"
-                    width="300" />
-                <h3>
-                    100 Days of Code: The Complete Python Pro Bootcamp
-                </h3>
-                <p>
-                    Dr. Angela Yu, Developer and Lead Instructor
-                </p>
-            </div>
-            <div class="card" onclick="window.location.href='{% url 'courses' %}'">
-                <img alt="JavaScript code on screen" height="200"
-                    src="https://storage.googleapis.com/a1aa/image/fU7C1XLcaYwAKqF5RFnX8x8YfOycM5tu6p5Vh7D6yXyHuQ2TA.jpg"
-                    width="300" />
-                <h3>
-                    The Complete JavaScript Course 2024: From Zero to Expert
-                </h3>
-                <p>
-                    Jonas Schmedtmann
-                </p>
-            </div>
-            <div class="card" onclick="window.location.href='{% url 'courses' %}'">
-                <img alt="Python code on screen" height="200"
-                    src="https://storage.googleapis.com/a1aa/image/M3eltVf3iDieeRGki89cyuhumEdNgBKlefWDoopBY6o7gLk9E.jpg"
-                    width="300" />
-                <h3>
-                    The Complete Python Bootcamp From Zero to Hero in Python
-                </h3>
-                <p>
-                    Jose Portilla, Pierian Training
-                </p>
-            </div>
-            <div class="card" onclick="window.location.href='{% url 'courses' %}'">
-                <img alt="Web development illustration" height="200"
-                    src="https://storage.googleapis.com/a1aa/image/tnTxI03feqhQeJgggRJ7wbeR3bev1jRDehetS9ZL5HohAXI7JA.jpg"
-                    width="300" />
-                <h3>
-                    The Web Developer Bootcamp 2024
-                </h3>
-                <p>
-                    Colt Steele
-                </p>
-            </div>
-            <div class="card" onclick="window.location.href='{% url 'courses' %}'">
-                <img alt="AI and machine learning illustration" height="200"
-                    src="https://storage.googleapis.com/a1aa/image/QPD0QjAZtlZvEBMwP7j2YOEF45InWEpzDtMOvqJIjQyfWI7JA.jpg"
-                    width="300" />
-                <h3>
-                    Machine Learning A-Z: AI, Python &amp; R + ChatGPT Prize
-                </h3>
-                <p>
-                    Kiril Eremenko, Hadelin de Ponteves, ...
-                </p>
-            </div>
-        </div>
-    </div>
-    </div>
-    
+
+
 </body>
-<script>
-    const carouselInner = document.querySelector('.carousel-inner');
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    const leftButton = document.querySelector('.left-button');
-    const rightButton = document.querySelector('.right-button');
-    let currentIndex = 0;
-
-    function updateCarousel(index) {
-        // Corrected the template literal syntax
-        carouselInner.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % carouselItems.length;
-        updateCarousel(currentIndex);
-    }
-
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
-        updateCarousel(currentIndex);
-    }
-
-    leftButton.addEventListener('click', prevSlide);
-    rightButton.addEventListener('click', nextSlide);
-
-    // Auto-slide every 5 seconds
-    setInterval(nextSlide, 5000);
-</script>
-
-
 </html>
+<script>
+
+      let name = document.getElementById("user_name")
+      let user_detail = JSON.parse(localStorage.getItem("user_details"))
+    
+
+    function showusername(){
+        if(!user_detail) {
+
+            name.textContent = "Hey signup to buy new courses"
+
+        }
+        else {
+            name.textContent = `Hey ${user_detail.name} check out the below courses `
+        }
+       
+
+    }
+   
+   showusername()
+
+   
+
+
+    
+
+    
+    // a1.addEventListener("mouseover", changeBackground)
+    // a1.addEventListener("mouseout", changeBackground1)
+    // a2.addEventListener("mouseover", changeBackground)
+    // a3.addEventListener("mouseover", changeBackground)
+    // a4.addEventListener("mouseover", changeBackground)
+    // a5.addEventListener("mouseover", changeBackground)
+    // a6.addEventListener("mouseover", changeBackground)
+    // a7.addEventListener("mouseover", changeBackground)
+   
+
+
+
+
+ 
+
+</script>

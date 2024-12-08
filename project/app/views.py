@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Register 
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def landpage(request):
@@ -49,9 +50,9 @@ def choice(request):
         user_type = request.POST.get('user_type')
         
         if user_type == 'learning':
-            return redirect('learning') 
+            return HttpResponseRedirect("https://karan23831.github.io/zeepo-learn") #https://karan23831.github.io/zeepo-learn/
         elif user_type == 'buisness':
-             return redirect('buisness')
+             return HttpResponseRedirect("https://skill-link-part2.vercel.app")
         else:
             return HttpResponse("Invalid user type", status=400) 
     return render(request,'app/choice.html')
@@ -66,5 +67,12 @@ def courses(request):
     return render(request, 'app3/courses.html')
 
 def buisness(request):
-    return render(request,'app2/buisness.html')
+    return render(request,'app/dashboard.html')
+
+def earn(request):
+    return HttpResponseRedirect("https://skill-link-part2.vercel.app/earn/jobsearch.html")
+
+def learn(request):
+    return HttpResponseRedirect("https://karan23831.github.io/zeepo-learn/")
+
 
